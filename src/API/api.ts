@@ -4,6 +4,12 @@ export const instance = axios.create({
   baseURL: 'https://thebetter.bsgroup.eu/',
 })
 
+instance.interceptors.request.use((config) => {
+  const token = localStorage.getItem('token')
+  config.headers!.Authorization = `Bearer ${token}`
+  return config
+})
+
 export type AuthLoginType = {
   userName: string | null
   password: string | null
@@ -14,8 +20,8 @@ export type AuthLoginResponseDataType = {
     Token: string
   }
   User: {
-    id: number
-    UserName: string
+    Id: number
+    FullName: string
   }
 }
 
@@ -23,17 +29,21 @@ export type GetMediaListType = {
   mediaListId: number
 }
 
-export type MediaListResponseDataType = {
-  id: number
-  title: string
-  description: string
-  year: number
-  duration: number
-  images: {
+export type MediaItem = {
+  Id: number
+  Title: string
+  Description: string
+  Year: number
+  Duration: number
+  Images: {
     ImageTypeCode: 'FRAME' | 'HIGHLIGHTS' | 'COVER'
     Url: string
   }[]
-}[]
+}
+
+export type MediaListResponseDataType = {
+  Entities: Array<MediaItem>
+}
 
 export type GetMediaInfoType = {
   mediaId: number

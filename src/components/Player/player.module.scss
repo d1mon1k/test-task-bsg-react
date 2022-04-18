@@ -1,0 +1,23 @@
+.playerWrapper {
+  position: relative;
+  padding-top: 56.25% /* Player ratio: 100 / (1280 / 720) */
+}
+
+.reactPlayer {
+  position: absolute;
+  z-index: 999;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.popUp {
+  background: rgba(0, 0, 0, 0.884);
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}

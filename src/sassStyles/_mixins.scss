@@ -1,0 +1,6 @@
+@mixin font($size: 15px, $weight: 400, $height: $size) {
+  font-family: 'Roboto', sans-serif ;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $height;
+}

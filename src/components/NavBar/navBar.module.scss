@@ -1,0 +1,46 @@
+@import '../../sassStyles/_mixins.scss';
+@import '../../sassStyles/_variables.scss';
+
+.ico {
+  @include font(24px, 400, 28px);
+  color: $addColor;
+  background-color: $accentColor;
+}
+
+.nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-top: 12px;
+  padding-bottom: 20px;
+  column-gap: 25px;
+  border-bottom: 1px solid #333;
+}
+
+.list {
+  display: inline-flex;
+  column-gap: 20px;
+}
+
+@media screen and (max-width: 680px) {
+  .list {
+    display: none;
+  }
+}
+
+.item {
+  @include font();
+  color: $addColor;
+}
+
+.link {
+  &.active {
+    color: $accentColor;
+  }
+}
+
+.login {
+  color: $accentColor;
+  cursor: pointer;
+}

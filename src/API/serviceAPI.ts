@@ -3,17 +3,15 @@ import {
   AuthLoginType,
   AuthLoginResponseDataType,
   GetMediaListType,
-  MediaListResponseDataType,
   GetMediaInfoType,
   MediaInfoResponseDataType,
+  MediaListResponseDataType,
 } from './api'
-
-let token = ''
 
 export class ServiceAPI {
   static async authLogin({ userName, password }: AuthLoginType) {
     try {
-      instance
+      let response = await instance
         .post<AuthLoginResponseDataType>('Authorization/SignIn', {
           Username: userName,
           Password: password,
@@ -22,10 +20,8 @@ export class ServiceAPI {
             Name: 'GUID',
           },
         })
-        .then((res) => {
-          token = res.data.AuthorizationToken.Token
-          return res.data
-        })
+        localStorage.setItem('token', response.data.AuthorizationToken.Token)
+        return response.data
     } catch (e) {
       console.log(e)
     }
@@ -34,10 +30,10 @@ export class ServiceAPI {
   static async getMediaList({ mediaListId }: GetMediaListType) {
     try {
       const response = await instance
-        .post<MediaListResponseDataType>(
+        .post<MediaListResponseDataType>( 
           'https://thebetter.bsgroup.eu/Media/GetMediaList',
           {
-            PageSize: 15,
+            PageSize: 25,
             PageNumber: 1,
             IncludeCount: true,
             MediaListId: mediaListId,
@@ -45,9 +41,8 @@ export class ServiceAPI {
             IncludeMedia: true,
             IncludeImages: true,
           },
-          { headers: { Authorization: `Bearer ${token}` } }
         )
-        .then((res) => res.data)
+        return response.data.Entities
     } catch (e) {
       console.log(e)
     }
@@ -62,11 +57,23 @@ export class ServiceAPI {
             MediaId: mediaId,
             StreamType: streamType,
           },
-          { headers: { Authorization: token } }
         )
-        .then((res) => res.data)
+        return response.data
     } catch (e) {
       console.log(e)
     }
   }
+
+  //============================== delete ==============================
+  // static async getCat() {
+  //   try {
+  //     const response = await instance
+  //       .get(
+  //         '/Media/GetMediaCategories'
+  //       )
+  //       console.log(response.data)
+  //   } catch (e) {
+  //     console.log(e)
+  //   }
+  // }
 }

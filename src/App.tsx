@@ -1,12 +1,21 @@
-import React from 'react'
-import { ServiceAPI } from './API/serviceAPI'
-import './App.css'
+import { MainScreen } from './components/MainScreen/MainScreen'
+import { NavBar } from './components/NavBar/NavBar'
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import cl from './app.module.scss'
+import { Route, Routes } from 'react-router-dom'
+import { Login } from './components/Login/Login'
 
 function App() {
-  ServiceAPI.authLogin({userName: null, password: null})
-
-  return <div className="App">
-  </div>
+  return (
+    <div className={cl.app}>
+      <NavBar />
+      <Routes>
+        <Route path='home' element={<MainScreen />} />
+        <Route path='/' element={<Login/>}/>
+      </Routes>
+    </div>
+  )
 }
 
 export default App
