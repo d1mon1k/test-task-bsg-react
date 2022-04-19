@@ -1,6 +1,7 @@
 import { ServiceAPI } from './../API/serviceAPI';
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import { MediaItem } from '../API/api';
+import { dataConversion } from '../app/helpers';
 
 interface MainScreenState {
   mediaList: {Suggestion: MediaItem[], Entertainment: MediaItem[]} | null,
@@ -57,20 +58,7 @@ const mainScreenSlice = createSlice({
       })
       .addCase(getMediaListAsync.fulfilled, (state, action) => {
         state.status = 'idle'
-        state.mediaList = action.payload!.reduce((prev: any, cur: any) => {
-          if (!cur.Categories[0]) {
-            if (!prev['Suggestion']) {
-              prev['Suggestion'] = []
-            }
-            prev[`Suggestion`].push(cur)
-            return prev
-          }
-          if (!prev[cur.Categories[0].CategoryName]) {
-            prev[cur.Categories[0].CategoryName] = []
-          }
-          prev[cur.Categories[0].CategoryName].push(cur)
-          return prev
-        }, {})
+        state.mediaList = dataConversion(action.payload!)
       }) 
       .addCase(getMediaPlayInfoAsync.pending, (state) => {
         state.mediaInfoStatus = 'loading'
