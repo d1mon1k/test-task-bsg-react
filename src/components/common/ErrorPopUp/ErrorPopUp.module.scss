@@ -1,0 +1,19 @@
+@import "../../../sassStyles/variables.scss";
+@import "../../../sassStyles/animation.scss";
+
+.errorWrapper {
+  position: fixed;
+  z-index: 999;
+  bottom: 40px;
+  right: 40px;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 1px;
+  color: #ff4d6d;
+  background-color: $accentBgColor;
+  animation-name: disappearance;
+  animation-duration: 3s;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+}
+

@@ -5,11 +5,12 @@ import { MediaItem } from '../../API/api'
 import { getMediaPlayInfoAsync } from '../../features/mainScreenSlice'
 
 interface SliderProps {
+  title: string,
   mediaList: MediaItem[],
   setIsPopUp: (arg0: boolean) => void
 }
 
-export const Slider: React.FC<SliderProps> = ({ mediaList, setIsPopUp }) => {
+export const Slider: React.FC<SliderProps> = ({ mediaList, setIsPopUp, title}) => {
   const dispatch = useAppDispatch()
 
   const sliderConfig = {
@@ -43,7 +44,7 @@ export const Slider: React.FC<SliderProps> = ({ mediaList, setIsPopUp }) => {
 
   return (
     <section>
-      <h2>Top Films</h2>
+      <h2>{title}</h2>
       <SlickSlider {...sliderConfig}>
         {mediaList!.map((elem) => {
           return (

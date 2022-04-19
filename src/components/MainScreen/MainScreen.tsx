@@ -1,23 +1,17 @@
-import { useAppDispatch, useAppSelector } from '../../app/hooks'
+import { useAppSelector } from '../../app/hooks'
 import { Slider } from '../../components/Slider/Slider'
 import { useEffect, useState } from 'react'
 import { Player } from '../Player/Player'
 import { Preloader } from '../common/Preloader/Preloader'
-import { getMediaListAsync } from '../../features/mainScreenSlice'
 import { useNavigate } from 'react-router-dom'
 
 export const MainScreen = () => {
   const [isPopUp, setIsPopUp] = useState(false)
-  const dispatch = useAppDispatch()
   const { user: {userName} } = useAppSelector(state => state.auth)
   const navigate = useNavigate()
 
   useEffect(() => {
-    if(!userName) {
-      navigate('/')
-    }else {
-      dispatch(getMediaListAsync())
-    }
+   !userName && navigate('/')
   }, [])
 
   const { mediaList, status, mediaUrl } = useAppSelector(
@@ -36,8 +30,8 @@ export const MainScreen = () => {
 
   return (
     <>
-      <Slider mediaList={mediaList} setIsPopUp={setIsPopUp} />
-      <Slider mediaList={mediaList} setIsPopUp={setIsPopUp} />
+      <Slider title={'Entertainment'} mediaList={mediaList.Entertainment} setIsPopUp={setIsPopUp} />
+      <Slider title={'Suggestion'} mediaList={mediaList.Suggestion} setIsPopUp={setIsPopUp} />
     </>
   )
 }

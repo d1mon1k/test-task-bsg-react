@@ -6,14 +6,14 @@ export const NavBar = () => {
   const { user } = useAppSelector((state) => state.auth)
 
   const isActive = ({ isActive }: any) => {
-    return isActive ? `${cl.link} ${cl.active}` : ''
+    return isActive ? `${cl.link} ${cl.active}` : `${cl.link}`
   }
 
   return (
     <>
       <nav className={cl.nav}>
-        <Link to="home">
-          <span className={cl.ico}>LOGO</span>
+        <Link className={cl.ico} to="home">
+           LOGO
         </Link>
         <ul className={cl.list}>
           <li className={cl.item}>
@@ -45,7 +45,7 @@ export const NavBar = () => {
         <Link to={!user.userName || user.userName ? '/' : ''}>
           <span className={cl.login}>
             {!user.userName || user.userName === 'Anonymous user'
-              ? 'Login'
+              ? 'Sign in'
               : user.userName}
           </span>
         </Link>

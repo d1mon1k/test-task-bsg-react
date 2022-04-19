@@ -2,9 +2,15 @@
 @import '../../sassStyles/_variables.scss';
 
 .ico {
-  @include font(24px, 400, 28px);
+  padding: 1px;
   color: $addColor;
   background-color: $accentColor;
+  @include font(25px, 600, 0px);
+  transition: all .2s linear;
+
+  &:hover {
+    background-color: #000;
+  }
 }
 
 .nav {
@@ -29,18 +35,26 @@
   }
 }
 
-.item {
-  @include font();
-  color: $addColor;
-}
-
 .link {
+  color: $addColor;
+  transition: color .2s linear;
+  @include font();
+
   &.active {
     color: $accentColor;
   }
+
+  &:hover:not(.active) {
+    color: #fff;
+  } 
 }
 
 .login {
   color: $accentColor;
   cursor: pointer;
+  transition: color .3s linear;
+
+  &:hover {
+    color: #fff;
+  }
 }

@@ -22,8 +22,8 @@ export class ServiceAPI {
         })
         localStorage.setItem('token', response.data.AuthorizationToken.Token)
         return response.data
-    } catch (e) {
-      console.log(e)
+      } catch (e) {
+      throw new Error(`${e}`)
     }
   }
 
@@ -60,20 +60,7 @@ export class ServiceAPI {
         )
         return response.data
     } catch (e) {
-      console.log(e)
+      throw new Error()
     }
   }
-
-  //============================== delete ==============================
-  // static async getCat() {
-  //   try {
-  //     const response = await instance
-  //       .get(
-  //         '/Media/GetMediaCategories'
-  //       )
-  //       console.log(response.data)
-  //   } catch (e) {
-  //     console.log(e)
-  //   }
-  // }
 }

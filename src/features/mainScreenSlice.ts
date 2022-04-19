@@ -3,9 +3,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import { MediaItem } from '../API/api';
 
 interface MainScreenState {
-  mediaList: MediaItem[] | null,
-  status: 'idle' | 'loading' | 'fail',
-  mediaInfoStatus: 'idle' | 'loading' | 'fail',
+  mediaList: {Suggestion: MediaItem[], Entertainment: MediaItem[]} | null,
+  status: 'idle' | 'loading' | 'failed',
+  mediaInfoStatus: 'idle' | 'loading' | 'failed',
   mediaUrl: string | null
 }
 
@@ -13,7 +13,7 @@ const initialState: MainScreenState = {
   mediaList: null,
   status: 'idle',
   mediaInfoStatus: 'idle',
-  mediaUrl: null
+  mediaUrl: null,
 }
 
 export const getMediaListAsync = createAsyncThunk(
@@ -57,7 +57,20 @@ const mainScreenSlice = createSlice({
       })
       .addCase(getMediaListAsync.fulfilled, (state, action) => {
         state.status = 'idle'
-        state.mediaList = action.payload!
+        state.mediaList = action.payload!.reduce((prev: any, cur: any) => {
+          if (!cur.Categories[0]) {
+            if (!prev['Suggestion']) {
+              prev['Suggestion'] = []
+            }
+            prev[`Suggestion`].push(cur)
+            return prev
+          }
+          if (!prev[cur.Categories[0].CategoryName]) {
+            prev[cur.Categories[0].CategoryName] = []
+          }
+          prev[cur.Categories[0].CategoryName].push(cur)
+          return prev
+        }, {})
       }) 
       .addCase(getMediaPlayInfoAsync.pending, (state) => {
         state.mediaInfoStatus = 'loading'

@@ -1,5 +1,5 @@
-@import "../../sassStyles/_variables.scss";
-@import "../../sassStyles/_mixins.scss";
+@import '../../sassStyles/_variables.scss';
+@import '../../sassStyles/_mixins.scss';
 
 .poster {
   padding-top: 40px;
@@ -19,10 +19,11 @@
   width: 100%;
   max-width: 300px;
   background-color: $accentBgColor;
-  @include font(16px);
   color: $addColor;
   border: none;
   border-radius: 3px;
+  @include font(16px);
+  
   &:focus {
     border: none;
     outline: none;
@@ -30,18 +31,25 @@
 }
 
 .button {
-  padding: 10px 13px;
-  width: 100%;
+  position: relative;
+  padding: 5px 13px;
   max-width: 200px;
-  background-color: $addBgColor;
-  @include font(13px);
+  width: 100%;
   color: $addColor;
   border: none;
   border-radius: 3px;
+  transition: all 0.3s ease-in;
   cursor: pointer;
+  background: $accentColor;
+  @include font(13px, 600);
 
   &:hover {
-    background-color: $accentColor;
+    background: $addColor;
     color: $addBgColor;
   }
+}
+
+.btnsRow {
+  display: flex;
+  column-gap: 10px;
 }

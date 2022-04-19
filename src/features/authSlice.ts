@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { ServiceAPI } from '../API/serviceAPI';
 
 interface AuthState {
-  token: string | null,
   user: {
     userName: string | null
   }
@@ -10,7 +9,6 @@ interface AuthState {
 }
 
 const initialState: AuthState = {
-  token: null,
   user: {
     userName: null
   },
@@ -32,6 +30,9 @@ const authSlice = createSlice({
     builder
       .addCase(authAsync.pending, (state) => {
         state.status = 'loading'
+      })
+      .addCase(authAsync.rejected, (state) => {
+        state.status = 'failed'
       })
       .addCase(authAsync.fulfilled, (state, action) => {
         state.status = 'idle'

@@ -8,11 +8,10 @@
 body {
   margin: 0;
   height: 100vh;
-  font-family: Sans, Arial, Helvetica;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 19px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  font-size: 15px;
   color: $addColor;
   background-color: $primary1Color;
   overflow-x: hidden;

@@ -1,4 +1,6 @@
+import { useState } from "react"
 import ReactPlayer from "react-player"
+import { ErrorPopUp } from "../common/ErrorPopUp/ErrorPopUp"
 import cl from './player.module.scss'
 
 interface PlayerProps {
@@ -7,12 +9,15 @@ interface PlayerProps {
 }
 
 export const Player: React.FC<PlayerProps> = ({ mediaUrl, setIsPopUp }) => {
+  const [error, setError] = useState(false)
+
   return (
+    <>
+    {error && <ErrorPopUp title={'The resource you are looking for might have been removed'}/>}
     <div className={cl.popUp} onClick={() => setIsPopUp(false)} >
       <div className={cl.playerWrapper}>
         <ReactPlayer
-          onStart={() => console.log('video start')}
-          onError={() => console.log('error')}
+          onError={() => setError(true)}
           playing={true}
           controls={true}
           width={'80%'}
@@ -22,5 +27,6 @@ export const Player: React.FC<PlayerProps> = ({ mediaUrl, setIsPopUp }) => {
         />
       </div>
     </div>
+    </>
   )
 }
