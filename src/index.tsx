@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import App from './App'
 import { store } from './app/store'
 import { Provider } from 'react-redux'
-import { HashRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 //note pass: Test12!@ login: test@bsgroup.eu | trial or main
 
