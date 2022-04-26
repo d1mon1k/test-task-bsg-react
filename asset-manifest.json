@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/test-bsg-react/static/css/main.f6d519cb.css",
-    "main.js": "/test-bsg-react/static/js/main.e995e43e.js",
-    "static/media/slick.svg": "/test-bsg-react/static/media/slick.2630a3e3eab21c607e21.svg",
-    "static/media/slick.eot": "/test-bsg-react/static/media/slick.a4e97f5a2a64f0ab1323.eot",
-    "static/media/slick.ttf": "/test-bsg-react/static/media/slick.c94f7671dcc99dce43e2.ttf",
-    "static/media/slick.woff": "/test-bsg-react/static/media/slick.295183786cd8a1389865.woff",
-    "static/media/preloader.svg": "/test-bsg-react/static/media/preloader.3996fc9d9bfe45d78dc906608a710c70.svg",
-    "index.html": "/test-bsg-react/index.html",
-    "main.f6d519cb.css.map": "/test-bsg-react/static/css/main.f6d519cb.css.map",
-    "main.e995e43e.js.map": "/test-bsg-react/static/js/main.e995e43e.js.map"
+    "main.css": "/test-task-bsg-react/static/css/main.f44f1cb4.css",
+    "main.js": "/test-task-bsg-react/static/js/main.88c06e0e.js",
+    "static/media/slick.svg": "/test-task-bsg-react/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/test-task-bsg-react/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/test-task-bsg-react/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/test-task-bsg-react/static/media/slick.295183786cd8a1389865.woff",
+    "static/media/preloader.svg": "/test-task-bsg-react/static/media/preloader.3996fc9d9bfe45d78dc906608a710c70.svg",
+    "index.html": "/test-task-bsg-react/index.html",
+    "main.f44f1cb4.css.map": "/test-task-bsg-react/static/css/main.f44f1cb4.css.map",
+    "main.88c06e0e.js.map": "/test-task-bsg-react/static/js/main.88c06e0e.js.map"
   },
   "entrypoints": [
-    "static/css/main.f6d519cb.css",
-    "static/js/main.e995e43e.js"
+    "static/css/main.f44f1cb4.css",
+    "static/js/main.88c06e0e.js"
   ]
 }
